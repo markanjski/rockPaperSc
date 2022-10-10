@@ -14,19 +14,30 @@ function playerChoice() {
     return a;
 }
 
-function playRound(player, comp) {
+function playRound() {
+    let player = playerChoice();
+    let comp = getComputerChoice();
     console.log(player, comp);
-    playerNum = player[0] == "r" ? 1 : (player[0] == "p" ? 2 : 3);
-    compNum = comp[0] == "r" ? 1 : (comp[0] == "p" ? 2 : 3);
+
+
+    playerNum = (player[0] == "R") ? 1 : ((player[0] == "P") ? 2 : 3);
+    compNum = (comp[0] == "R") ? 1 : ((comp[0] == "P") ? 2 : 3);
     console.log(playerNum, compNum);
+
+    if (playerNum - compNum == 0) {
+        console.log("Tie");
+        return 0;
+    } else if (playerNum - compNum == 1 || playerNum - compNum == -2) {
+        console.log("u won");
+        return 1;
+    } else console.log("comp won")
+    return 2;
 }
 
 
 
 
-playRound("rock", "asdf");
 
 for (let i = 0; i < 20; i++) {
-
-    //playRound("Paper", getComputerChoice());
+    console.table(getComputerChoice());
 }
