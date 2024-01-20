@@ -1,2 +1,2 @@
 # rockPaperSc
-rps
+try it on https://markanjski.github.io/rockPaperSc/
