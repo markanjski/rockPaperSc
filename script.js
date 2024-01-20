@@ -1,71 +1,76 @@
-const choiceArr = ["Rock", "Paper", "Scissors"];
+const rps = ["Rock", "Paper", "Scissors"];
+var userChoice = "";
+var pScore = 0;
+var cScore = 0;
+var roundNum = 0;
+
+const p1 = document.getElementById("p1");
+const p2 = document.getElementById("p2");
+const p3 = document.getElementById("p3");
+const score = document.getElementById("score");
+const buttons = document.querySelectorAll(".pick");
+const btnDiv = document.querySelectorAll(".btnDiv");
+const restart = document.getElementById("restart");
+const rstDiv = document.querySelector(".rstDiv");
+
+buttons.forEach((x) => x.addEventListener("click", clickFunc));
+restart.addEventListener("click", rst);
+
+function clickFunc(e) {
+  playRound(Number(e.target.id[1]));
+}
 
 function getComputerChoice() {
-    let choice = Math.floor(Math.random() * 3);
-    return choiceArr[choice];
+  return Math.floor(Math.random() * 3);
 }
 
-function playerChoice() {
-    let a = "";
-    while (!choiceArr.includes(a)) {
-        a = prompt("Pick Rock, Paper or Scissors");
-        a = a[0].toLocaleUpperCase() + a.slice(1).toLocaleLowerCase();
-    }
-    return a;
+function playRound(player) {
+  roundNum++;
+  if (roundNum == 6) {    
+    //
+    roundNum = 1;
+    (pScore = 0), (cScore = 0);
+  }
+  if (roundNum == 1) {
+    p1.style.fontWeight = "normal";
+    p1.style.color = "#e5e5e5";
+  }
+  let comp = getComputerChoice();
+  p2.innerText = `You chose ${rps[player]} and computer chose ${rps[comp]}`;
+
+  if (player - comp == 0) {
+    p1.innerText = "It's a Tie";
+  } else if (player - comp == 1 || player - comp == -2) {
+    pScore++;
+    p1.innerText = "You win this round";
+  } else {
+    p1.innerText = "Computer wins this round";
+    cScore++;
+  }
+  score.innerText = `${pScore} : ${cScore}`;
+  if (roundNum == 5) end();
 }
 
-function playRound() {
-    let player = playerChoice();
-    let comp = getComputerChoice();
-    console.log(`You chose ${player}, computer chose ${comp}`);
-    playerNum = (player[0] == "R") ? 1 : ((player[0] == "P") ? 2 : 3);
-    compNum = (comp[0] == "R") ? 1 : ((comp[0] == "P") ? 2 : 3);
-    console.log(playerNum, compNum);
-
-    if (playerNum - compNum == 0) {
-        console.log("It's a Tie");
-        return 0;
-    } else if (playerNum - compNum == 1 || playerNum - compNum == -2) {
-        console.log("Congrats! You win");
-        return 1;
-    } else console.log("Too bad. Computer win");
-    return 2;
+function end() {
+  p1.style.fontWeight = "bold";
+  p1.style.color = "rgb(237, 111, 0)";
+  if (pScore > cScore) {
+    p1.innerText = "CONGRATS! YOU HAVE WON!!!";
+  } else if (pScore == cScore) {
+    p1.innerText = "NO WINER THIS TIME";
+  } else {
+    p1.innerText = "TOO BAD! COMPUTER HAVE WON :(";
+  }
+  
+  btnDiv.forEach(element => {
+    element.style.display="none";    
+  });
+  console.log(rstDiv.style)
+  rstDiv.style.display = "block";
+  
 }
 
-function game() { //BEST OF FIVE
-    console.log("\n * * * NEW GAME * * *");
-    let scorePlayer = 0,
-        scoreComp = 0;
-    for (let i = 0; i < 5; i++) {
-        console.log(`--> round ${i+1}`);
-        let round = playRound();
-        switch (round) {
-            case 1:
-                scorePlayer++;
-                break;
-            case 2:
-                scoreComp++;
-                break;
-            default:
-                break;
-        }
-        console.log(`Current score: \nPlayer ${scorePlayer} : ${scoreComp} Computer\n\n`);
-    }
-    switch (true) {
-        case scorePlayer > scoreComp:
-            console.log(">>>>YOU HAVE WON!!!")
-            break;
-
-        case scoreComp > scorePlayer:
-            console.log(">>>>Computer have won!")
-            break;
-        case scoreComp == scorePlayer:
-            console.log(">>>>TIE!")
-            break;
-
-    }
-    console.log(scorePlayer, scoreComp);
-
+function rst(){
+    console.log("hoho")
+    location.reload();
 }
-
-game();
