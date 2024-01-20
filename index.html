@@ -5,13 +5,37 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
 
 <body>
-    <p>parag</p>
+    <div id="container">
+        <div id="banner">
+            <img id="bannerImg" src="vecteezy_rock-paper-scissors-cartoon-banner-with-hands_14320397.jpg" alt="">   
+        </div>
+        <div id="title">
+            <p id="p1" class="par">Welcome! Play versus Computer best of 5 rounds!</p>
+            <p id="p2" class="par">Choose wisely and click below!</p>
+            
+        </div>
+        <div id="buttons">
+            <div class="btnDiv pick"> <button class="button" id="i0"></button></div>
+            <div class="btnDiv pick"> <button class="button" id="i1"></button></div>
+            <div class="btnDiv pick"> <button class="button" id="i2"></button></div>
+            <div class=" rstDiv" > <button class="button" id="restart">RESTART</button></div>
+            
+        </div>
+        <div id="msgDiv">
+            <p id="p3" class="par">CURRENT SCORE</p>
+            <p id="p4" class="par"> <span id="green">You &nbsp &nbsp </span> <span id="score">0 : 0</span><span id="red"> &nbsp &nbsp PC</span></p>
+        </div>
+    </div>
+    
+    
 
     <script src="script.js"></script>
+    
 </body>
 
 </html>
