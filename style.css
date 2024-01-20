@@ -227,34 +227,34 @@ p {
 }
 
 #i0 {
-  background: url("/rockS.png");
+  background: url("rockS.png");
   background-size: cover;
   background-position: center;
 }
 #i1 {
-  background: url("/paperS.png");
+  background: url("paperS.png");
   background-size: cover;
   background-position: center;
 }
 #i2 {
-  background: url("/scissS.png");
+  background: url("scissS.png");
   background-size: cover;
   background-position: center;
 }
 #i0:hover {
-  background: url("/rock.png");
+  background: url("rock.png");
   background-size: cover;
   background-position: center;
 }
 #i1:hover {
-  background: url("/paper.png");
+  background: url("paper.png");
   background-size: cover;
   background-position: center;
 }
 
 #i2:hover
 {
-  background: url("/sciss.png");
+  background: url("sciss.png");
   background-size: cover;
   background-position: center;
 }
